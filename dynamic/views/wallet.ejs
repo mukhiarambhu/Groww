@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            Groww - Online Demat, Trading and Direct Mutual Fund Investment in
+            India
+        </title>
+        <link
+            rel="icon"
+            type="image/png"
+            href="https://groww.in/logo-groww270.png"
+            sizes="32x32"
+        />
+        <link rel="stylesheet" href="/css/wallet.css" />
+        <link rel="stylesheet" href="/css/navbar.css" />
+        <link
+            href="/fonts.googleapis.com/css?family=Roboto&subset=latin"
+            rel="stylesheet"
+            type="text/css"
+        />
+    </head>
+
+    <body>
+        <!-- nav using partials (include takes relative path)-->
+        <%- include("../partials/navbar.partial.ejs") %>
+
+        <div id="container">
+            <div id="container2">
+                <div class="balance">
+                    <div style="margin-top: 4%">BALANCE AVAILABLE</div>
+                    <div style="font-size: 22px">
+                        ₹
+                        <span id="wallet-total-amount">
+                            <%= user.current_balance %>
+                        </span>
+                    </div>
+                </div>
+                <div class="balance2">
+                    <div style="font-size: 20px">Details</div>
+                    <div class="sbl">
+                        <div>Closing balance</div>
+                        <div>
+                            <span id="closing-balance">
+                                <%= user.current_balance %> /-
+                            </span>
+                        </div>
+                    </div>
+                    <div class="sbl">
+                        <div>Ongoing balance</div>
+                        <div>
+                            <span id="ongoing-balance">
+                                <%= user.current_balance %> /-
+                            </span>
+                        </div>
+                    </div>
+                    <div class="sbl">
+                        <div>Balance</div>
+                        <div>
+                            <span id="balance">
+                                <%= user.current_balance %> /-
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="but">
+                    <button>VIEW TRANSACTIONS</button>
+                </div>
+            </div>
+
+            <form action="/wallet/update_wallet" method="post">
+                <div id="container3">
+                    <div>
+                        <div>Enter Amount</div>
+                        <div>
+                            <input
+                                type="number"
+                                placeholder="₹ 0.00"
+                                id="amount"
+                                name="add_balance"
+                                value="0.00"
+                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                maxlength="5"
+                                required
+                            />
+                        </div>
+                    </div>
+                    <!-- <div id="but2">
+                        <button>+₹ 100</button>
+                        <button>+₹ 500</button>
+                    </div> -->
+                    <div>
+                        <div>Pay Using:</div>
+                        <div id="options">
+                            More Options
+                        </div>
+                    </div>
+                    <div>
+                        <img
+                            src="https://is3-ssl.mzstatic.com/image/thumb/Purple115/v4/09/c2/5a/09c25a4f-04ac-9f53-f7c6-00db0419213b/AppIcon-1x_U007emarketing-0-10-0-85-220.png/1200x630wa.png"
+                        />
+                        <div style="width: 80%">
+                            <input
+                                type="email"
+                                placeholder="Enter UPI Id"
+                                id="pin"
+                                name="upi_id"
+                                required
+                            />
+                            <br />
+                            
+                        </div>
+                    </div>
+                    <div>
+                        <button
+                            type="submit"
+                            id="bigbutton"
+                        >
+                            Deposit Money
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </body>
+</html>
